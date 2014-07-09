@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Trying Angular</title>
+    <link href="./css/bootstrap.min.css" rel="stylesheet">
+    <link href="./css/adminia-1.1.css" rel="stylesheet"> 
+    <link href="./css/font-awesome.min.css" rel="stylesheet">
+  </head>
+
+<body ng-app="instantSearch" ng-controller="InstantSearchController">
+<div id="content">
+	<div class="container">
+		<div class="row">
+			<div class="span9">
+				<h1 class="page-title">
+					<i class="icon-home"></i>
+					MotoGP Rider Lookup					
+				</h1>
+
+				<input type="text" ng-model="searchString" placeholder="Enter the rider name" />
+
+				<div class="widget widget-table">
+										
+					<div class="widget-header">
+						<i class="icon-th-list"></i>
+						<h3>2014 MotoGP Riders</h3>
+					</div>
+					
+					<div class="widget-content">
+					
+						<table class="table table-striped table-bordered">
+							<thead>
+								<tr>
+									<th>Rank</th>
+									<th>Flag</th>
+									<th>Name</th>
+									<th>Bike</th>
+									<th>Point</th>
+								</tr>
+							</thead>
+							
+							<tbody>
+								<tr ng-repeat="i in items | searchFor:searchString">
+									<td>{{i.rank}}</td>
+									<td><img ng-src="{{i.flag}}" /></td>
+									<td><a href="{{i.url}}">{{i.name}}</a></td>
+									<td>{{i.team}}</td>
+									<td>{{i.point}}</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<div id="footer">
+	<div class="container">		
+		<hr />		
+		<div class="row">
+				<div id="rights" class="span6">
+				Pascal Bruno
+				</div>
+			</div>
+	</div>
+</div>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.7/angular.min.js"></script>
+<script src="script.js"></script>
+</body>
+</html>
